@@ -60,3 +60,7 @@ int ExecutableProcess::get_arrival_time() {
 int ExecutableProcess::get_start_execution_time() {
   return this->start_time;
 }
+
+int ExecutableProcess::get_conclusion_time() {
+  return this->finish_time;
+}

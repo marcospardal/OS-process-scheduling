@@ -33,6 +33,8 @@ class ExecutableProcess {
     int get_arrival_time();
 
     int get_start_execution_time();
+
+    int get_conclusion_time();
 };
 
 #endif
