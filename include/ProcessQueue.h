@@ -34,6 +34,10 @@ class ProcessQueue {
 
     float get_queue_response_time();
 
+    float get_queue_turnaround_time();
+
+    float get_queue_wait_time();
+
   public:
     ProcessQueue(vector<ExecutableProcess> processes, string type);
 

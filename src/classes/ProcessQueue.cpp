@@ -72,7 +72,9 @@ void ProcessQueue::sleep(int time_units) {
 }
 
 void ProcessQueue::display_queue_performance() {
-  cout << type << ": " << get_queue_response_time() << endl;
+  cout << type << ": \n" << endl;
+  cout << "\t response time - " << get_queue_response_time() << endl;
+  cout << "\t turnaround time - " << get_queue_turnaround_time() << endl;
 }
 
 float ProcessQueue::get_queue_response_time() {
@@ -88,4 +90,23 @@ float ProcessQueue::get_queue_response_time() {
   average_response_time = sum_response_time / finished_processes.size();
 
   return average_response_time;
+}
+
+float ProcessQueue::get_queue_turnaround_time() {
+  float sum_turnaround_time = 0;
+  float average_turnaround_time = 0;
+
+  for (auto& process : finished_processes) {
+    float process_turnaround_time = process.get_conclusion_time() - process.get_arrival_time();
+
+    sum_turnaround_time += process_turnaround_time;
+  }
+
+  average_turnaround_time = sum_turnaround_time / finished_processes.size();
+
+  return average_turnaround_time;
+}
+
+float ProcessQueue::get_queue_wait_time() {
+
 }
