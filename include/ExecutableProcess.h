@@ -26,6 +26,8 @@ class ExecutableProcess {
     void execute(int time_units, int current_time);
 
     bool is_active();
+
+    int get_execution_time();
 };
 
 #endif
