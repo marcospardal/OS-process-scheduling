@@ -4,10 +4,11 @@
 
 class ExecutableProcess {
   private:
-    int start_time = -1;
-    int finish_time = -1;
+    int start_time;
+    int finish_time;
     int execution_time;
     int current_time;
+    int arrival_time;
 
     void start_process(); 
 
@@ -21,13 +22,17 @@ class ExecutableProcess {
 
 
   public:
-    ExecutableProcess(int execution_time) : execution_time(execution_time) {};
+    ExecutableProcess(int execution_time, int arrival_time);
 
     void execute(int time_units, int current_time);
 
     bool is_active();
 
     int get_execution_time();
+
+    int get_arrival_time();
+
+    int get_start_execution_time();
 };
 
 #endif

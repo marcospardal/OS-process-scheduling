@@ -26,21 +26,16 @@ void FileReader::read_lines() {
 void FileReader::process_line_data(string line) {
   int break_at = line.find(' ');
 
-  int start_time = stoi(line.substr(0, break_at));
+  int arrival_time = stoi(line.substr(0, break_at));
   int execution_time = stoi(line.substr(break_at, line.size()));
 
-  schedule_new_process(start_time, execution_time);
+  schedule_new_process(arrival_time, execution_time);
 }
 
-void FileReader::schedule_new_process(int start_time, int execution_time) {
-  ExecutableProcess new_process = ExecutableProcess(execution_time);
+void FileReader::schedule_new_process(int arrival_time, int execution_time) {
+  ExecutableProcess new_process = ExecutableProcess(execution_time, arrival_time);
 
-  processes_start_time.push_back(start_time);
   processes.push_back(new_process);
-}
-
-vector<int> FileReader::get_process_start_time() {
-  return processes_start_time;
 }
 
 vector<ExecutableProcess> FileReader::get_processes() {

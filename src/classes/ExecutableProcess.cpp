@@ -3,6 +3,14 @@
 
 using namespace std;
 
+ExecutableProcess::ExecutableProcess(int execution_time, int arrival_time) {
+  start_time = -1;
+  finish_time = -1;
+
+  this->execution_time = execution_time;
+  this->arrival_time = arrival_time;
+}
+
 void ExecutableProcess::execute(int time_units, int current_time) {
   this->current_time = current_time;
 
@@ -33,7 +41,7 @@ void ExecutableProcess::execute_process(int time_units) {
 }
 
 bool ExecutableProcess::will_not_finish(int time_units) {
-  return time_units <= this->execution_time;
+  return time_units < this->execution_time;
 }
 
 void ExecutableProcess::finish_process() {
@@ -43,4 +51,12 @@ void ExecutableProcess::finish_process() {
 
 int ExecutableProcess::get_execution_time() {
   return this->execution_time;
+}
+
+int ExecutableProcess::get_arrival_time() {
+  return this->arrival_time;
+}
+
+int ExecutableProcess::get_start_execution_time() {
+  return this->start_time;
 }
