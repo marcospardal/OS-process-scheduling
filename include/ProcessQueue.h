@@ -2,6 +2,7 @@
 #define PROCESS_QUEUE_H
 
 #include <vector>
+#include <iostream>
 
 #include "ExecutableProcess.h"
 
@@ -9,11 +10,11 @@ using namespace std;
 
 class ProcessQueue {
   protected:
+    string type;
     vector<ExecutableProcess> waiting_processes;
     vector<ExecutableProcess> active_processes;
     vector<ExecutableProcess> finished_processes;
-    vector<int> processes_start_time;
-    int current_time = 0;
+    int current_time;
 
     void activate_eligible_processes();
 
@@ -27,14 +28,20 @@ class ProcessQueue {
 
     virtual void execute_process() = 0;
 
+    void check_running_processes();
+
+    void close_process(int process_index);
+
+    float get_queue_response_time();
+
   public:
-    ProcessQueue(vector<ExecutableProcess> processes, vector<int> processes_start_time) : waiting_processes(processes), processes_start_time(processes_start_time) {};
+    ProcessQueue(vector<ExecutableProcess> processes, string type);
 
     void execute();
 
     void sleep(int time_units);
 
-
+    void display_queue_performance();
 };
 
 #endif
