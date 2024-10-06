@@ -7,19 +7,13 @@ ProcessQueue::ProcessQueue(vector<ExecutableProcess> processes, string type) {
 }
 
 void ProcessQueue::execute() {
-  while(true) {
+  while(has_active_process() || has_waiting_process()) {
     check_running_processes();
 
     activate_eligible_processes();
 
     if (has_active_process()) execute_process();
-
-    bool has_process_to_execute = has_active_process() || has_waiting_process();
-
-    if (!has_process_to_execute)
-      break;
-
-    sleep(1);
+    else sleep(1);
   }
 }
 
