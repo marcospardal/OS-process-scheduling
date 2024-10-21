@@ -62,9 +62,7 @@ void ProcessQueue::sleep(int time_units) {
 }
 
 void ProcessQueue::display_queue_performance() {
-  cout << type << ": \n" << endl;
-  cout << "\t response time - " << get_queue_response_time() << endl;
-  cout << "\t turnaround time - " << get_queue_turnaround_time() << endl;
+  cout << type << " " << get_queue_response_time() << " " << get_queue_turnaround_time() << endl;
 }
 
 float ProcessQueue::get_queue_response_time() {
