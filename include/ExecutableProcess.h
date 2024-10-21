@@ -12,8 +12,6 @@ class ExecutableProcess {
 
     void start_process(); 
 
-    bool can_execute();
-
     void execute_process(int time_units);
 
     bool will_not_finish(int time_units);
@@ -23,6 +21,8 @@ class ExecutableProcess {
 
   public:
     ExecutableProcess(int execution_time, int arrival_time);
+
+    bool can_execute();
 
     void execute(int time_units, int current_time);
 
