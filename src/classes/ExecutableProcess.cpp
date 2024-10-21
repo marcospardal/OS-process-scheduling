@@ -45,8 +45,11 @@ bool ExecutableProcess::will_not_finish(int time_units) {
 }
 
 void ExecutableProcess::finish_process() {
+  int time_to_add = this->execution_time;
+
   this->finish_time = this->current_time + this->execution_time;
   this->execution_time = 0;
+  this->current_time = time_to_add;
 }
 
 int ExecutableProcess::get_execution_time() {
