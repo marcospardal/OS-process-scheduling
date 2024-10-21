@@ -57,10 +57,6 @@ void ProcessQueue::activate_process(int wating_process_index) {
   waiting_processes.erase(waiting_processes.begin() + wating_process_index);
 }
 
-void ProcessQueue::execute_process(int active_process_index, int time_units) {
-  this->active_processes[active_process_index].execute(time_units, this->current_time);
-}
-
 void ProcessQueue::sleep(int time_units) {
   this->current_time += time_units;
 }

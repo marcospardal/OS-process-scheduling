@@ -24,8 +24,6 @@ class ProcessQueue {
 
     bool has_waiting_process();
 
-    void execute_process(int active_process_index, int time_units);
-
     virtual void execute_process() = 0;
 
     void check_running_processes();
