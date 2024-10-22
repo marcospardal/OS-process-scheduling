@@ -53,7 +53,7 @@ void ExecutableProcess::finish_process() {
   this->current_time = time_to_add;
 }
 
-int ExecutableProcess::get_execution_time() {
+int ExecutableProcess::get_execution_time() const {
   return this->execution_time;
 }
 
@@ -71,4 +71,8 @@ int ExecutableProcess::get_process_turnaround_time() {
 
 int ExecutableProcess::get_process_wait_time() {
   return this->get_process_turnaround_time() - this->burst_time;
+}
+
+int ExecutableProcess::get_burst_time() const {
+  return this->burst_time;
 }

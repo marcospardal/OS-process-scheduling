@@ -31,13 +31,15 @@ class ExecutableProcess {
 
     int get_arrival_time();
 
-    int get_execution_time();
+    int get_execution_time() const;
 
     int get_process_turnaround_time();
 
     int get_process_response_time();
 
     int get_process_wait_time();
+
+    int get_burst_time() const;
 };
 
 #endif
