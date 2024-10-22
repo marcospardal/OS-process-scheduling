@@ -4,7 +4,7 @@
 
 #include "FileReader.h"
 #include "FCFS.h"
-
+#include "SJF.h"
 
 using namespace std;
 
@@ -15,6 +15,7 @@ int main() {
   file_reader.read_file("../data/input.txt");
 
   queues.push_back(make_unique<FCFS>(file_reader.get_processes()));
+  queues.push_back(make_unique<SJF>(file_reader.get_processes()));
 
   for (const auto& queue : queues) {
     queue->execute();
