@@ -9,6 +9,7 @@ ExecutableProcess::ExecutableProcess(int execution_time, int arrival_time) {
 
   this->execution_time = execution_time;
   this->arrival_time = arrival_time;
+  this->burst_time = execution_time;
 }
 
 void ExecutableProcess::execute(int time_units, int current_time) {
@@ -60,10 +61,14 @@ int ExecutableProcess::get_arrival_time() {
   return this->arrival_time;
 }
 
-int ExecutableProcess::get_start_execution_time() {
-  return this->start_time;
+int ExecutableProcess::get_process_response_time() {
+  return this->start_time - this->arrival_time;
 }
 
-int ExecutableProcess::get_conclusion_time() {
-  return this->finish_time;
+int ExecutableProcess::get_process_turnaround_time() {
+  return this->finish_time - this->arrival_time;
+}
+
+int ExecutableProcess::get_process_wait_time() {
+  return this->get_process_turnaround_time() - this->burst_time;
 }

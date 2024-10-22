@@ -9,6 +9,7 @@ class ExecutableProcess {
     int execution_time;
     int current_time;
     int arrival_time;
+    int burst_time;
 
     void start_process(); 
 
@@ -28,13 +29,15 @@ class ExecutableProcess {
 
     bool is_active();
 
-    int get_execution_time();
-
     int get_arrival_time();
 
-    int get_start_execution_time();
+    int get_execution_time();
 
-    int get_conclusion_time();
+    int get_process_turnaround_time();
+
+    int get_process_response_time();
+
+    int get_process_wait_time();
 };
 
 #endif
