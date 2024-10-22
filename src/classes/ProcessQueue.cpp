@@ -21,7 +21,7 @@ void ProcessQueue::check_running_processes() {
   int process_index = 0;
 
   for (auto& process : active_processes) {
-    if (!process.is_active())
+    if (!process.is_active() && !process.can_execute())
       close_process(process_index);
 
     process_index++;
@@ -39,17 +39,18 @@ void ProcessQueue::activate_eligible_processes() {
   for (auto& process : this->waiting_processes) {
     if (process.get_arrival_time() <= this->current_time) {
       activate_process(process_index);
+      break;
     }
     process_index++;
   }
 }
 
 bool ProcessQueue::has_active_process() {
-  return this->active_processes.size();
+  return this->active_processes.size() > 0;
 }
 
 bool ProcessQueue::has_waiting_process() {
-  return this->waiting_processes.size();
+  return this->waiting_processes.size() > 0;
 }
 
 void ProcessQueue::activate_process(int wating_process_index) {
