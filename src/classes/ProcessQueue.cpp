@@ -1,9 +1,10 @@
 #include "ProcessQueue.h"
 
-ProcessQueue::ProcessQueue(vector<ExecutableProcess> processes, string type) {
+ProcessQueue::ProcessQueue(vector<ExecutableProcess> processes, string type, bool activate_single_process_by_time) {
   this->waiting_processes = processes;
   this->type = type;
   this->current_time = 0;
+  this->activate_single_process_by_time = activate_single_process_by_time;
 }
 
 void ProcessQueue::execute() {
@@ -39,7 +40,9 @@ void ProcessQueue::activate_eligible_processes() {
   for (auto& process : this->waiting_processes) {
     if (process.get_arrival_time() <= this->current_time) {
       activate_process(process_index);
-      break;
+      
+      if (this->activate_single_process_by_time)
+        break;
     }
     process_index++;
   }

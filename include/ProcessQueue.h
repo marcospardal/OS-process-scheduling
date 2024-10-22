@@ -15,6 +15,7 @@ class ProcessQueue {
     vector<ExecutableProcess> active_processes;
     vector<ExecutableProcess> finished_processes;
     int current_time;
+    bool activate_single_process_by_time;
 
     void activate_eligible_processes();
 
@@ -37,7 +38,7 @@ class ProcessQueue {
     float get_queue_wait_time();
 
   public:
-    ProcessQueue(vector<ExecutableProcess> processes, string type);
+    ProcessQueue(vector<ExecutableProcess> processes, string type, bool activate_single_process_by_time);
 
     void execute();
 
